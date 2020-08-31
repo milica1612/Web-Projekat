@@ -1,5 +1,7 @@
 package beans;
 
+import beans.Status;
+
 public class Reservation {
 
 	private String id;
