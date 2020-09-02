@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "jquery-3.3.1.min.js"></script>
+    <script src = "registration.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -40,7 +41,7 @@ Registracija</div>
 <div class="signup-link">
 Nemate nalog? <a href="">Registrujte se</a></div>
 </form>
-<form action="#" class="signup">
+<form id ="regForma" action="#" class="signup">
             <div class="field">
               <input type="text" placeholder="Korisnicko ime" required>
             </div>
@@ -54,10 +55,10 @@ Nemate nalog? <a href="">Registrujte se</a></div>
                 <input type="text" placeholder="Pol" required>
               </div>
 <div class="field">
-                <input type="password" placeholder="Potvrdite lozinku" required>
+                <input type="password" name="pass1" placeholder="Lozinka" required>
               </div>
 <div class="field">
-              <input type="password" placeholder="Potvrdite lozinku" required>
+              <input type="password" name="pass2" placeholder="Potvrdite lozinku" required>
             </div>
 <div class="field btn">
               <div class="btn-layer">
