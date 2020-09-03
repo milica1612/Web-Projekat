@@ -6,5 +6,24 @@ $(document).ready(function(){
 			event.preventDefault();
 			alert("Lozinke se ne poklapaju!");
 		}
+		
+		let username = $('input[name="username"]').val();
+		let name = $('input[name="name"]').val();
+		let lastName = $('input[name="lastName"]').val();
+		let gender = $('input[name="gender"]').val();
+		
+		$.post({
+			url: '',
+			data: JSON.stringify({username:username, password:password1, firstName:name,
+								  lastName:lastName, gender:gender}), 
+			contentType: 'application/json',
+			success: function(user){
+				alert("Uspješna registracija!");
+			},
+			error: function(message){
+				alert("Došlo je do greške prilikom registracije!");
+			}
+		});
+		
 	});
 });

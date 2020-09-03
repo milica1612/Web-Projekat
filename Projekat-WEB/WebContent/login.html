@@ -43,16 +43,21 @@ Nemate nalog? <a href="">Registrujte se</a></div>
 </form>
 <form id ="regForma" action="#" class="signup">
             <div class="field">
-              <input type="text" placeholder="Korisnicko ime" required>
+              <input type="text" name="username" placeholder="Korisnicko ime" required>
             </div>
 <div class="field">
-              <input type="text" placeholder="Ime" required>
+              <input type="text" name="name" placeholder="Ime" required>
             </div>
 <div class="field">
-                <input type="text" placeholder="Prezime" required>
+                <input type="text" name="lastName" placeholder="Prezime" required>
               </div>
 <div class="field">
-                <input type="text" placeholder="Pol" required>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Muški</label><br>
+                </div>
+<div class="field">
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Ženski</label>
               </div>
 <div class="field">
                 <input type="password" name="pass1" placeholder="Lozinka" required>
