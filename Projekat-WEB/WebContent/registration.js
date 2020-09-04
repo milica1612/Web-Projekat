@@ -13,7 +13,7 @@ $(document).ready(function(){
 		let gender = $('input[name="gender"]').val();
 		
 		$.post({
-			url: '',
+			url: '/registration',
 			data: JSON.stringify({username:username, password:password1, firstName:name,
 								  lastName:lastName, gender:gender}), 
 			contentType: 'application/json',

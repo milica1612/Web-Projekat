@@ -1,10 +1,14 @@
 package dao;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.apache.tomcat.jni.File;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.User;
@@ -13,18 +17,35 @@ public class UserDAO {
 
 	private HashMap<String, User> users = new HashMap<String, User>();
 	
-	public UserDAO(){
-		
+	public UserDAO(String contextPath) throws NoSuchAlgorithmException, IOException {
+		loadUsers(contextPath);
 	}
 	
-	public User addNew(User user){
+	public User addNewUser(User user){
 		users.put(user.getUsername(), user);
 		return user;
 	}
 	
-	public void save(String contextPath) {
-		ObjectMapper mapper = new ObjectMapper();
-		File userFile = new File();
-	}
-	
+	//ucitavanje liste korisnika iz fajla
+		public ArrayList<User> loadUsers(String contextPath) throws IOException, NoSuchAlgorithmException {
+		    ObjectMapper mapper = new ObjectMapper();
+		    File userFile = new File(contextPath + "users.json");
+		    
+		    boolean created = userFile.createNewFile();
+		    if (created) {
+		       ArrayList<User> users = new ArrayList<User>();
+		       mapper.writeValue(userFile, users);
+		    }
+		 
+		    return mapper.readValue(userFile, new TypeReference<ArrayList<User>>() {});
+		}
+		
+		
+		//upisivanje u novi fajl 
+		public void saveUsers(String contextPath) throws IOException {
+		    ObjectMapper mapper = new ObjectMapper();
+		    File userFile = new File(contextPath + "users.json");
+		    userFile.createNewFile();
+		    mapper.writeValue(userFile, users);
+		}
 }
