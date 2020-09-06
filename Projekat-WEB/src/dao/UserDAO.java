@@ -33,17 +33,17 @@ public class UserDAO {
 	}
 	
 	//ucitavanje liste korisnika iz fajla
-		public ArrayList<User> loadUsers(String contextPath) throws IOException, NoSuchAlgorithmException {
+		public HashMap<String,User> loadUsers(String contextPath) throws IOException, NoSuchAlgorithmException {
 		    ObjectMapper mapper = new ObjectMapper();
-		    File userFile = new File(contextPath + "users.json");
+		    File userFile = new File(contextPath + "/users.json");
 		    
 		    boolean created = userFile.createNewFile();
 		    if (created) {
-		       ArrayList<User> users = new ArrayList<User>();
+		       
 		       mapper.writeValue(userFile, users);
 		    }
 		 
-		    return mapper.readValue(userFile, new TypeReference<ArrayList<User>>() {});
+		    return mapper.readValue(userFile, new TypeReference<HashMap<String,User>>() {});
 		}
 		
 		

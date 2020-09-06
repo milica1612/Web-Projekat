@@ -53,7 +53,7 @@ public class RegistrationService {
 		try {
 			registered = (User) userDao.addNewUser(user);
 			
-			if(registered.equals(null)) {
+			if(registered == null) {
 				return Response.status(400).entity("Korisnicko ime nije jedinstveno").build();
 			}
 			
