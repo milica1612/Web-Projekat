@@ -23,7 +23,7 @@ import beans.User;
 
 import dao.UserDAO;
 
-@Path("")
+@Path("/reg")
 public class RegistrationService {
 
 	@Context
@@ -45,10 +45,23 @@ public class RegistrationService {
 	@Path("/registration")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response registration(User user, @Context HttpServletRequest request) throws IOException {
+	public Response registration(User user, @Context HttpServletRequest request) {
+		System.out.println("uspesno");
+
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		User registered = userDao.addNewUser(user);
-		userDao.saveUsers(contextPath);
+		User registered;
+		try {
+			registered = (User) userDao.addNewUser(user);
+			
+			if(registered.equals(null)) {
+				return Response.status(400).entity("Korisnicko ime nije jedinstveno").build();
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return Response.status(200).build();
 	}
 	

@@ -16,13 +16,19 @@ import beans.User;
 public class UserDAO {
 
 	private HashMap<String, User> users = new HashMap<String, User>();
+	private String contextPath;
 	
 	public UserDAO(String contextPath) throws NoSuchAlgorithmException, IOException {
+		this.contextPath = contextPath;
 		loadUsers(contextPath);
 	}
 	
-	public User addNewUser(User user){
+	public User addNewUser(User user) throws IOException{
+		if(users.containsKey(user.getUsername())) {
+			return null;
+		}
 		users.put(user.getUsername(), user);
+		saveUsers(contextPath);
 		return user;
 	}
 	
@@ -44,7 +50,7 @@ public class UserDAO {
 		//upisivanje u novi fajl 
 		public void saveUsers(String contextPath) throws IOException {
 		    ObjectMapper mapper = new ObjectMapper();
-		    File userFile = new File(contextPath + "users.json");
+		    File userFile = new File(contextPath + "/users.json");
 		    userFile.createNewFile();
 		    mapper.writeValue(userFile, users);
 		}
