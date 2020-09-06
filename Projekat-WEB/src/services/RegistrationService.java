@@ -45,8 +45,7 @@ public class RegistrationService {
 	@Path("/registration")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response registration(User user, @Context HttpServletRequest request) {
-		System.out.println("uspesno");
+	public Response registration(User user, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
 
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 		User registered;
@@ -65,17 +64,4 @@ public class RegistrationService {
 		return Response.status(200).build();
 	}
 	
-	/*@POST
-	@Path("/login")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(User user, @Context HttpServletRequest request) {
-		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		User loggedUser = userDao.find(user.getUsername(), user.getPassword());
-		if (loggedUser != null) {
-			return Response.status(400).entity("Invalid username and/or password").build();
-		}
-		request.getSession().setAttribute("user", loggedUser);
-		return Response.status(200).build();
-	}*/
 }
