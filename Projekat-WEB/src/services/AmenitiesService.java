@@ -18,6 +18,7 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Amenities;
 import beans.User;
+import dao.AmenitiesDAO;
 import dao.ApartmentDAO;
 import dao.UserDAO;
 
@@ -33,9 +34,9 @@ public class AmenitiesService {
 	
 	@PostConstruct
 		public void init() throws NoSuchAlgorithmException, IOException {
-		if (ctx.getAttribute("apartmentDAO") == null) {
+		if (ctx.getAttribute("amenitiesDAO") == null) {
 	    	contextPath = ctx.getRealPath("");
-			ctx.setAttribute("apartmentDAO", new ApartmentDAO(contextPath));
+			ctx.setAttribute("amenitiesDAO", new AmenitiesDAO(contextPath));
 		}
 	}
 	
@@ -43,11 +44,11 @@ public class AmenitiesService {
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public User postAmenitie(Amenities amenities,
+	public Amenities postAmenitie(Amenities amenities,
 						 @Context HttpServletRequest request) {
-		ApartmentDAO apartmentDAO = (ApartmentDAO) ctx.getAttribute("apartmentDAO");
-		
-		return apartmentDAO.postAmenities(amenities);
+		AmenitiesDAO amenitiesDAO = (AmenitiesDAO) ctx.getAttribute("amenitiesDAO");
+		System.out.println(contextPath);
+		return amenitiesDAO.addNewAmenities(amenities);
 	}
 	
 	@GET
@@ -65,12 +66,12 @@ public class AmenitiesService {
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public User editUser(@PathParam("id") Long id, 
+	public Amenities editAmenities(@PathParam("id") Long id, 
 						 Amenities amenities,
 						 @Context HttpServletRequest request) {
-		ApartmentDAO apartmentDAO = (ApartmentDAO) ctx.getAttribute("apartmentDAO");
+		AmenitiesDAO amenitiesDAO = (AmenitiesDAO) ctx.getAttribute("amenitiesDAO");
 		
-		return apartmentDAO.editAmenities(id, amenities);
+		return amenitiesDAO.editAmenities(id, amenities);
 	}
 
 }
