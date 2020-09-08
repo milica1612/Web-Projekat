@@ -2,22 +2,33 @@ package beans;
 
 public class Amenities {
 
-	private String id;
+	private long id;
 	private String name;
+	private boolean active;
 	
 	public Amenities() {
+		this.active = true;
 	}
 	
-	public Amenities(String id, String name) {
+	public Amenities(long id, String name, boolean active) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.active = active;
 	}
 	
-	public String getId() {
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {

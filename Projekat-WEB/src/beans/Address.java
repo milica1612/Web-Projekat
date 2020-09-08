@@ -2,6 +2,7 @@ package beans;
 
 public class Address {
 
+	private long id;
 	private String streetAndNumber;
 	private String city;
 	private long postNumber;
@@ -10,11 +11,21 @@ public class Address {
 		
 	}
 	
-	public Address(String streetAndNumber, String city, long postNumber) {
+	public Address(Long id, String streetAndNumber, String city, long postNumber) {
 		super();
+		this.id = id;
 		this.streetAndNumber = streetAndNumber;
 		this.city = city;
 		this.postNumber = postNumber;
+	}
+
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getStreetAndNumber() {

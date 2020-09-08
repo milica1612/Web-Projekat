@@ -2,17 +2,24 @@ package beans;
 
 public class Location {
 
+	private long id;
 	private double length;
 	private double width;
-	
 	
 	public Location() {
 		
 	}
-	public Location(double length, double width) {
+	public Location(long id, double length, double width) {
 		super();
+		this.id = id;
 		this.length = length;
 		this.width = width;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public double getLength() {
 		return length;

@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	console.log('document ready');
+//	$('#btnID').on("click", function() {
+//		
+//	})
 	$('#regForma').submit(function(event){	
 		let password1 = $('input[name=pass1]').val();
 		let password2 = $('input[name=pass2]').val();
@@ -19,7 +22,6 @@ $(document).ready(function(){
 			lastName:lastName, 
 			gender:gender
 		}
-		console.log(registrationObj);
 		
 		$.ajax({
 			type: 'POST',

@@ -13,21 +13,22 @@ public class User {
 		private ArrayList<String> apartmentsForRent;
 		private ArrayList<String> rentedApartments;
 		private ArrayList<String> reservations;
+		private boolean active;
 		
 		public User() {
-			
+			this.active = true;
 		}	
 		
-		public User(String username, String password, String firstName, String lastName) {
+		public User(String username, String password, String firstName, String lastName, boolean active) {
 			super();
 			this.username = username;
 			this.password = password;
 			this.firstName = firstName;
 			this.lastName = lastName;
-			
+			this.active = active;
 		}
 		
-		public User(String username, String password, String firstName, String lastName, Gender gender, Role role) {
+		public User(String username, String password, String firstName, String lastName, Gender gender, Role role, boolean active) {
 			super();
 			this.username = username;
 			this.password = password;
@@ -35,6 +36,7 @@ public class User {
 			this.lastName = lastName;
 			this.gender = gender;
 			this.role = role;
+			this.active = active;
 			this.apartmentsForRent = new ArrayList<String>();
 			this.rentedApartments = new ArrayList<String>();
 			this.reservations = new ArrayList<String>();
@@ -93,5 +95,12 @@ public class User {
 		}
 		public void setReservations(ArrayList<String> reservations) {
 			this.reservations = reservations;
+		}
+
+		public boolean isActive() {
+			return active;
+		}
+		public void setActive(boolean active) {
+			this.active = active;
 		}
 }

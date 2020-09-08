@@ -1,23 +1,27 @@
 package beans;
 
+import java.time.LocalDate;
+
 import beans.Status;
 
 public class Reservation {
 
-	private String id;
-	private String apartment;
-	private long date;
+	private long id;
+	private long apartment;
+	private LocalDate date;
 	private int nights;
 	private double price;
 	private String message;
 	private String guest;
 	private Status status;
+	private boolean active;
 	
 	public Reservation() {
+		this.active = true;
 	}
 	
-	public Reservation(String id, String apartment, long date, int nights, double price, String message, String guest,
-			Status status) {
+	public Reservation(long id, long apartment, LocalDate date, int nights, double price, String message, String guest,
+			Status status, boolean active) {
 		super();
 		this.id = id;
 		this.apartment = apartment;
@@ -27,24 +31,32 @@ public class Reservation {
 		this.message = message;
 		this.guest = guest;
 		this.status = status;
+		this.active = active;
 	}
 	
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public String getApartment() {
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public long getApartment() {
 		return apartment;
 	}
-	public void setApartment(String apartment) {
+	public void setApartment(long apartment) {
 		this.apartment = apartment;
 	}
-	public long getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(long date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public int getNights() {

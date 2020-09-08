@@ -2,30 +2,41 @@ package beans;
 
 public class Comment {
 
-	private String id;
+	private long id;
 	private String guest;
 	private String apartment;
 	private String text;
 	private int grade;
+	private boolean active;
 	
 	public Comment() {
+		this.active = true;
 	}
 	
-	public Comment(String id, String guest, String apartment, String text, int grade) {
+	public Comment(long id, String guest, String apartment, String text, int grade, boolean active) {
 		super();
 		this.id = id;
 		this.guest = guest;
 		this.apartment = apartment;
 		this.text = text;
 		this.grade = grade;
+		this.active = active;
 	}
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public String getGuest() {

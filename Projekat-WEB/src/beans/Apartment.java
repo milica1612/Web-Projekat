@@ -1,10 +1,10 @@
 package beans;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Apartment {
-
-	private String id;
+	private long id;
 	private ApartmentType type;
 	private int roomNumber;
 	private int numberOfGuests;
@@ -12,20 +12,21 @@ public class Apartment {
 	private ArrayList<Long> rentingDates;
 	private ArrayList<Long> availableDates;
 	private String host;
-	private ArrayList<String> comments;
+	private ArrayList<Long> comments;
 	private ArrayList<String> images;
-	private int checkinTime;
-	private int checkoutTime;
+	private LocalTime checkinTime;
+	private LocalTime checkoutTime;
 	private ApartmentStatus status;
-	private ArrayList<String> amenities;
-	private ArrayList<String> reservations;
+	private ArrayList<Long> amenities;
+	private ArrayList<Long> reservations;
+	private boolean active;
 	
 	private Apartment() {
-		
+		this.active = true;
 	}
 	
-	public Apartment(String id, ApartmentType type, int roomNumber, int numberOfGuests, Location location, String host,
-			int checkinTime, int checkoutTime, ApartmentStatus status) {
+	public Apartment(long id, ApartmentType type, int roomNumber, int numberOfGuests, Location location, String host,
+			LocalTime checkinTime, LocalTime checkoutTime, ApartmentStatus status, boolean active) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -36,20 +37,13 @@ public class Apartment {
 		this.checkinTime = checkinTime;
 		this.checkoutTime = checkoutTime;
 		this.status = status;
-		this.amenities = new ArrayList<String>();
-		this.reservations = new ArrayList<String>();
+		this.amenities = new ArrayList<Long>();
+		this.reservations = new ArrayList<Long>();
 		this.availableDates = new ArrayList<Long>();
 		this.rentingDates = new ArrayList<Long>();
-		this.comments = new ArrayList<String>();
+		this.comments = new ArrayList<Long>();
 		this.images = new ArrayList<String>();
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+		this.active = active;
 	}
 
 	public ApartmentType getType() {
@@ -58,6 +52,14 @@ public class Apartment {
 
 	public void setType(ApartmentType type) {
 		this.type = type;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public int getRoomNumber() {
@@ -108,14 +110,6 @@ public class Apartment {
 		this.host = host;
 	}
 
-	public ArrayList<String> getComments() {
-		return comments;
-	}
-
-	public void setComments(ArrayList<String> comments) {
-		this.comments = comments;
-	}
-
 	public ArrayList<String> getImages() {
 		return images;
 	}
@@ -124,19 +118,19 @@ public class Apartment {
 		this.images = images;
 	}
 
-	public int getCheckinTime() {
+	public LocalTime getCheckinTime() {
 		return checkinTime;
 	}
 
-	public void setCheckinTime(int checkinTime) {
+	public void setCheckinTime(LocalTime checkinTime) {
 		this.checkinTime = checkinTime;
 	}
 
-	public int getCheckoutTime() {
+	public LocalTime getCheckoutTime() {
 		return checkoutTime;
 	}
 
-	public void setCheckoutTime(int checkoutTime) {
+	public void setCheckoutTime(LocalTime checkoutTime) {
 		this.checkoutTime = checkoutTime;
 	}
 
@@ -148,26 +142,36 @@ public class Apartment {
 		this.status = status;
 	}
 
-	public ArrayList<String> getAmenities() {
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public ArrayList<Long> getComments() {
+		return comments;
+	}
+
+	public void setComments(ArrayList<Long> comments) {
+		this.comments = comments;
+	}
+
+	public ArrayList<Long> getAmenities() {
 		return amenities;
 	}
 
-	public void setAmenities(ArrayList<String> amenities) {
+	public void setAmenities(ArrayList<Long> amenities) {
 		this.amenities = amenities;
 	}
 
-	public ArrayList<String> getReservations() {
+	public ArrayList<Long> getReservations() {
 		return reservations;
 	}
 
-	public void setReservations(ArrayList<String> reservations) {
+	public void setReservations(ArrayList<Long> reservations) {
 		this.reservations = reservations;
 	}
-	
-	
-	
-	
-	
-
 	
 }
