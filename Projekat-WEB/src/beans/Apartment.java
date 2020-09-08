@@ -12,6 +12,7 @@ public class Apartment {
 	private ArrayList<Long> rentingDates;
 	private ArrayList<Long> availableDates;
 	private String host;
+	private double price;
 	private ArrayList<Long> comments;
 	private ArrayList<String> images;
 	private LocalTime checkinTime;
@@ -24,9 +25,9 @@ public class Apartment {
 	private Apartment() {
 		this.active = true;
 	}
-	
+
 	public Apartment(long id, ApartmentType type, int roomNumber, int numberOfGuests, Location location, String host,
-			LocalTime checkinTime, LocalTime checkoutTime, ApartmentStatus status, boolean active) {
+			double price, LocalTime checkinTime, LocalTime checkoutTime, ApartmentStatus status, boolean active) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -34,6 +35,7 @@ public class Apartment {
 		this.numberOfGuests = numberOfGuests;
 		this.location = location;
 		this.host = host;
+		this.price = price;
 		this.checkinTime = checkinTime;
 		this.checkoutTime = checkoutTime;
 		this.status = status;
@@ -44,6 +46,14 @@ public class Apartment {
 		this.comments = new ArrayList<Long>();
 		this.images = new ArrayList<String>();
 		this.active = active;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public ApartmentType getType() {
