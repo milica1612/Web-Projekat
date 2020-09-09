@@ -3,6 +3,7 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -129,5 +130,10 @@ public class UserDAO {
 		}
 		
 		return user;
+	}
+
+	public HashMap<String, User> getAllUsers() {
+		
+		return users;
 	}
 }

@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
@@ -14,6 +15,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import beans.User;
 import dao.UserDAO;
@@ -44,6 +47,16 @@ public class UserService {
 		User activeUser = (User) request.getSession(false).getAttribute("user");
 		
 		return userDao.getUser(activeUser);
+	}
+	
+	@GET
+	@Path("")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public HashMap<String,User> getAllUsers(@Context HttpServletRequest request) {
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+
+		return userDao.getAllUsers();
 	}
 	
 	@PUT
