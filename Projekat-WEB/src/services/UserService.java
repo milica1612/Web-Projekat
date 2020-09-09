@@ -63,10 +63,29 @@ public class UserService {
 		
 	@GET
 	@Path("/{username}")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<User> findUsersByUserName(@PathParam("username") String username, @Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 		return userDao.findUserByUserName(username);
+	}
+	
+	@GET
+	@Path("/{gender}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Collection<User> findUsersByGender(@PathParam("gender") String gender, @Context HttpServletRequest request) {
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+		return userDao.findUserByGender(gender);
+	}
+	
+	@GET
+	@Path("/{role}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> findUsersByRole(@PathParam("role") String role, @Context HttpServletRequest request) {
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+		return userDao.findUserByRole(role);
 	}
 	
 

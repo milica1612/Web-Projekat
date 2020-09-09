@@ -55,6 +55,17 @@ public class UserDAO {
 			return Gender.FEMALE;
 		}
 	}
+	
+	private Role getRole(String role ) {
+		switch (role) {
+		case "HOST":
+			return Role.HOST;
+		case "GUEST":
+			return Role.GUEST;
+		default:
+			return Role.ADMIN;
+		}
+	}
 
 	public User findUser(User user) {
 		User checkUser = users.get(user.getUsername());
@@ -152,6 +163,30 @@ public class UserDAO {
 		
 		for (User user : active) {
 			if(user.getUsername().contains(username)) {
+				retUsers.add(user);
+			}
+		}
+		return retUsers;
+	}
+
+	public Collection<User> findUserByRole(String role) {
+		ArrayList<User> active = (ArrayList<User>) getAllUsers();
+		ArrayList<User> retUsers = new ArrayList<User>();
+		
+		for (User user : active) {
+			if(user.getRole().equals(getRole(role))) {
+				retUsers.add(user);
+			}
+		}
+		return retUsers;
+	}
+
+	public Collection<User> findUserByGender(String gender) {
+		ArrayList<User> active = (ArrayList<User>) getAllUsers();
+		ArrayList<User> retUsers = new ArrayList<User>();
+		
+		for (User user : active) {
+			if(user.getGender().equals(getGender(gender))) {
 				retUsers.add(user);
 			}
 		}
