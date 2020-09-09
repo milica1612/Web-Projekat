@@ -62,22 +62,6 @@ public class ApartmentDAO {
 		return newApartment;
 	}
 	
-	public User postAmenities(Amenities amenities) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public User getAmenities(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public User editAmenities(Long id, Amenities amenities2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-		
-	
 	public HashMap<Long,Apartment> loadApartments(String contextPath) throws IOException, NoSuchAlgorithmException {
 	    ObjectMapper mapper = new ObjectMapper();
 	    File apartmentFile = new File(contextPath + "/apartments.json");
