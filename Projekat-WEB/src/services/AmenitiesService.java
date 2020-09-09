@@ -51,17 +51,6 @@ public class AmenitiesService {
 		return amenitiesDAO.addNewAmenities(amenities);
 	}
 	
-	@GET
-	@Path("/{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public User getAmenitie(@PathParam("id") Long id, 
-						 @Context HttpServletRequest request) {
-		ApartmentDAO apartmentDAO = (ApartmentDAO) ctx.getAttribute("apartmentDAO");
-		
-		return apartmentDAO.getAmenities(id);
-	}
-	
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)

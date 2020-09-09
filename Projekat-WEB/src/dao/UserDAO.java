@@ -3,6 +3,7 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -132,8 +133,29 @@ public class UserDAO {
 		return user;
 	}
 
-	public HashMap<String, User> getAllUsers() {
+	public Collection<User> getAllUsers() {
+		ArrayList<User> retUsers = new ArrayList<User>();
 		
-		return users;
+		for (User user : users.values()) {
+		
+			if(user.isActive()) {
+				retUsers.add(user);
+			}
+		}
+		
+		return retUsers;
 	}
+
+	public Collection<User> findUserByUserName(String username) {
+		ArrayList<User> active = (ArrayList<User>) getAllUsers();
+		ArrayList<User> retUsers = new ArrayList<User>();
+		
+		for (User user : active) {
+			if(user.getUsername().contains(username)) {
+				retUsers.add(user);
+			}
+		}
+		return retUsers;
+	}
+		
 }

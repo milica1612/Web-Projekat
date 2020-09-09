@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
@@ -39,8 +40,9 @@ public class UserService {
 		}
 	}
 	
+	//pronalazi ulogovanog korisnika
 	@GET
-	@Path("/{username}")
+	@Path("/active")
 	@Produces(MediaType.APPLICATION_JSON)
 	public User getUser(@PathParam("username") String username, @Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
@@ -53,11 +55,21 @@ public class UserService {
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public HashMap<String,User> getAllUsers(@Context HttpServletRequest request) {
+	public Collection<User> getAllUsers(@Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 
 		return userDao.getAllUsers();
 	}
+		
+	@GET
+	@Path("/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> findUsersByUserName(@PathParam("username") String username, @Context HttpServletRequest request) {
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+		return userDao.findUserByUserName(username);
+	}
+	
+
 	
 	@PUT
 	@Path("/{username}")
