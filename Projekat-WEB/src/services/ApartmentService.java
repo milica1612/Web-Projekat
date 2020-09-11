@@ -52,8 +52,7 @@ public class ApartmentService {
 		apartment.setHost(host);
 		
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		
-				
+					
 		Apartment added = (Apartment) apartmentDao.addNewApartment(apartment);
 		userDao.addNewApartment(host, added);
 			
