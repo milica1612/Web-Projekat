@@ -42,7 +42,7 @@ public class ApartmentService {
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Apartment postApartment(Apartment apartment, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
+	public Apartment postApartment(Apartment apartment, @Context HttpServletRequest request) throws NoSuchAlgorithmException, IOException {
 		
 		System.out.println("apartment");
 		ApartmentDAO apartmentDao = (ApartmentDAO) ctx.getAttribute("apartmentDAO");
@@ -52,9 +52,10 @@ public class ApartmentService {
 		apartment.setHost(host);
 		
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		userDao.addNewApartment(host, apartment);
+		
 				
 		Apartment added = (Apartment) apartmentDao.addNewApartment(apartment);
+		userDao.addNewApartment(host, added);
 			
 		if(added == null) {
 			return null;

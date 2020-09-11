@@ -194,10 +194,11 @@ public class UserDAO {
 		return retUsers;
 	}
 
-	public void addNewApartment(String host, Apartment apartment) {
+	public void addNewApartment(String host, Apartment apartment) throws NoSuchAlgorithmException, IOException {
 		
 		User user = users.get(host);
 		user.setApartmentsForRent(apartment.getId());	
+		saveUsers(contextPath);
 	}
 		
 }
