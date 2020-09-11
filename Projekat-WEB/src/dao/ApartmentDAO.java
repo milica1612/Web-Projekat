@@ -27,10 +27,6 @@ public class ApartmentDAO {
 	}
 
 	public Apartment addNewApartment(Apartment apartment) {	
-	
-		if(apartments.containsKey(apartment.getId())) {
-			return null;
-		}
 		
 		Apartment newApartment = createNewApartment(apartment);
 		apartments.put(newApartment.getId(), newApartment);
@@ -40,7 +36,7 @@ public class ApartmentDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return apartment;
+		return newApartment;
 		
 	}
 	

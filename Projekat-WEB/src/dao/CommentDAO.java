@@ -35,7 +35,7 @@ public class CommentDAO {
 			e.printStackTrace();
 		}
 	
-		return comment;
+		return newComment;
 	}
 	
 	private Comment createNewComment(Comment comment) {
