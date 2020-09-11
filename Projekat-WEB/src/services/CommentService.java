@@ -13,24 +13,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Reservation;
-import dao.ReservationDAO;
+import beans.Comment;
+import dao.CommentDAO;
 
-@Path("/reservations")
-public class ReservationService {
-	
+
+@Path("/comments")
+public class CommentService {
+		
 	@Context
 	public ServletContext ctx;
 	String contextPath;
 	
-	public ReservationService() {
+	public CommentService() {
 	}
 	
 	@PostConstruct
 		public void init() throws NoSuchAlgorithmException, IOException {
-		if (ctx.getAttribute("reservationDAO") == null) {
+		if (ctx.getAttribute("commentDAO") == null) {
 	    	contextPath = ctx.getRealPath("");
-			ctx.setAttribute("reservationDAO", new ReservationDAO(contextPath));
+			ctx.setAttribute("commentDAO", new CommentDAO(contextPath));
 			System.out.println(contextPath);
 		}
 	}
@@ -39,16 +40,12 @@ public class ReservationService {
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Reservation postReservation(Reservation reservation, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
+	public Comment postComment(Comment comment, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
 		
-		System.out.println("reservation");
-		ReservationDAO reservationDao = (ReservationDAO) ctx.getAttribute("reservationDAO");
+		System.out.println("comment");
+		CommentDAO commentDao = (CommentDAO) ctx.getAttribute("commentDAO");
 		
-		String guest = (String) request.getSession().getAttribute("user");
-		
-		reservation.setGuest(guest);
-		
-		Reservation added = (Reservation) reservationDao.addNewReservation(reservation);
+		Comment added = (Comment) commentDao.addNewComment(comment);
 			
 		if(added == null) {
 			return null;
@@ -57,5 +54,3 @@ public class ReservationService {
 		return added;
 		}
 }
-
-

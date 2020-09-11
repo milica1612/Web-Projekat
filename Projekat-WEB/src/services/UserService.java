@@ -14,6 +14,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -62,28 +63,28 @@ public class UserService {
 	}
 		
 	@GET
-	@Path("/{username}")
+	@Path("/username")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> findUsersByUserName(@PathParam("username") String username, @Context HttpServletRequest request) {
+	public Collection<User> findUsersByUserName(@QueryParam("username") String username, @Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 		return userDao.findUserByUserName(username);
 	}
 	
 	@GET
-	@Path("/{gender}")
+	@Path("/gender")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Collection<User> findUsersByGender(@PathParam("gender") String gender, @Context HttpServletRequest request) {
+	public Collection<User> findUsersByGender(@QueryParam("gender") String gender, @Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 		return userDao.findUserByGender(gender);
 	}
 	
 	@GET
-	@Path("/{role}")
+	@Path("/role")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> findUsersByRole(@PathParam("role") String role, @Context HttpServletRequest request) {
+	public Collection<User> findUsersByRole(@QueryParam("role") String role, @Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 		return userDao.findUserByRole(role);
 	}

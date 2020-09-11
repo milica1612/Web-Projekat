@@ -4,7 +4,7 @@ public class Comment {
 
 	private long id;
 	private String guest;
-	private String apartment;
+	private long apartment;
 	private String text;
 	private int grade;
 	private boolean active;
@@ -13,7 +13,7 @@ public class Comment {
 		this.active = true;
 	}
 	
-	public Comment(long id, String guest, String apartment, String text, int grade, boolean active) {
+	public Comment(long id, String guest, long apartment, String text, int grade, boolean active) {
 		super();
 		this.id = id;
 		this.guest = guest;
@@ -47,11 +47,11 @@ public class Comment {
 		this.guest = guest;
 	}
 
-	public String getApartment() {
+	public long getApartment() {
 		return apartment;
 	}
 
-	public void setApartment(String apartment) {
+	public void setApartment(long apartment) {
 		this.apartment = apartment;
 	}
 

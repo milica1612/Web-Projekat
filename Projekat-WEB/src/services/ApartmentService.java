@@ -47,10 +47,13 @@ public class ApartmentService {
 		System.out.println("apartment");
 		ApartmentDAO apartmentDao = (ApartmentDAO) ctx.getAttribute("apartmentDAO");
 		
-		String host = (String) request.getSession().getAttribute("user");
-		
+		User user = (User) request.getSession().getAttribute("user");
+		String host = user.getUsername();
 		apartment.setHost(host);
 		
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+		userDao.addNewApartment(host, apartment);
+				
 		Apartment added = (Apartment) apartmentDao.addNewApartment(apartment);
 			
 		if(added == null) {

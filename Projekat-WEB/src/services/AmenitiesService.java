@@ -20,7 +20,6 @@ import beans.Amenities;
 import beans.User;
 import dao.AmenitiesDAO;
 import dao.ApartmentDAO;
-import dao.UserDAO;
 
 @Path("/amenities")
 public class AmenitiesService {

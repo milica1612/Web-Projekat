@@ -10,6 +10,7 @@ import java.util.HashMap;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import beans.Apartment;
 import beans.Gender;
 import beans.Role;
 import beans.User;
@@ -191,6 +192,12 @@ public class UserDAO {
 			}
 		}
 		return retUsers;
+	}
+
+	public void addNewApartment(String host, Apartment apartment) {
+		
+		User user = users.get(host);
+		user.setApartmentsForRent(apartment.getId());	
 	}
 		
 }
