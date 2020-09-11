@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Apartment;
 import beans.Gender;
+import beans.Reservation;
 import beans.Role;
 import beans.User;
 
@@ -198,6 +199,12 @@ public class UserDAO {
 		
 		User user = users.get(host);
 		user.setApartmentsForRent(apartment.getId());	
+		saveUsers(contextPath);
+	}
+
+	public void addNewReservation(String guest, Reservation added) throws NoSuchAlgorithmException, IOException {
+		User user = users.get(guest);
+		user.setRentedApartments(added.getId());
 		saveUsers(contextPath);
 	}
 		

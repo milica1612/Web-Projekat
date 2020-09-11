@@ -14,7 +14,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Reservation;
+import beans.User;
 import dao.ReservationDAO;
+import dao.UserDAO;
 
 @Path("/reservations")
 public class ReservationService {
@@ -39,16 +41,20 @@ public class ReservationService {
 	@Path("")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Reservation postReservation(Reservation reservation, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
+	public Reservation postReservation(Reservation reservation, @Context HttpServletRequest request) throws NoSuchAlgorithmException, IOException {
 		
 		System.out.println("reservation");
 		ReservationDAO reservationDao = (ReservationDAO) ctx.getAttribute("reservationDAO");
 		
-		String guest = (String) request.getSession().getAttribute("user");
+		User guest = (User) request.getSession().getAttribute("user");
+		String guestUsername = guest.getUsername();
 		
-		reservation.setGuest(guest);
+		reservation.setGuest(guestUsername);
 		
 		Reservation added = (Reservation) reservationDao.addNewReservation(reservation);
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+		userDao.addNewReservation(guestUsername, added);
+		
 			
 		if(added == null) {
 			return null;
