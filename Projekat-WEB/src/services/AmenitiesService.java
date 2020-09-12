@@ -61,5 +61,16 @@ public class AmenitiesService {
 		
 		return amenitiesDAO.editAmenities(id, amenities);
 	}
+	
+	@PUT
+	@Path("/delete")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Amenities deleteAmenities(Long id,
+						 @Context HttpServletRequest request) {
+		AmenitiesDAO amenitiesDAO = (AmenitiesDAO) ctx.getAttribute("amenitiesDAO");
+		
+		return amenitiesDAO.deleteAmenitie(id);
+	}
 
 }

@@ -92,17 +92,30 @@ public class UserDAO {
 	}
 	
 	//ucitavanje liste korisnika iz fajla
-	public HashMap<String,User> loadUsers(String contextPath) throws IOException, NoSuchAlgorithmException {
+	public HashMap<String,User> loadUsers(String contextPath) {
 	    ObjectMapper mapper = new ObjectMapper();
 	    File userFile = new File(contextPath + "/users.json");
 	    
-	    boolean created = userFile.createNewFile();
-	    if (created) {
+	    boolean created;
+		try {
+			created = userFile.createNewFile();
+			if (created) {
 	       
 	       mapper.writeValue(userFile, users);
 	    }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
 	 
-	    return mapper.readValue(userFile, new TypeReference<HashMap<String,User>>() {});
+	    try {
+			return mapper.readValue(userFile, new TypeReference<HashMap<String,User>>() {});
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return null;
 	}
 	
 	//upisivanje u novi fajl 
@@ -203,6 +216,7 @@ public class UserDAO {
 	}
 
 	public void addNewReservation(String guest, Reservation added) throws NoSuchAlgorithmException, IOException {
+		
 		User user = users.get(guest);
 		user.setRentedApartments(added.getId());
 		saveUsers(contextPath);

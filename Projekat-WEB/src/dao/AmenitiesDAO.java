@@ -98,4 +98,9 @@ public class AmenitiesDAO {
 		}
 		return existing;
 	}
+
+	public Amenities deleteAmenitie(Long id) {
+		
+		return null;
+	}
 }

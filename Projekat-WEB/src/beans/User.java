@@ -81,6 +81,22 @@ public class User {
 		public void setRentedApartments(long rentedApartment) {
 			this.rentedApartments.add(rentedApartment);
 		}
+		public User(String username, String password, String firstName, String lastName, Gender gender, Role role,
+				ArrayList<Long> apartmentsForRent, ArrayList<Long> rentedApartments, ArrayList<Long> reservations,
+				boolean active) {
+			super();
+			this.username = username;
+			this.password = password;
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.gender = gender;
+			this.role = role;
+			this.apartmentsForRent = apartmentsForRent;
+			this.rentedApartments = rentedApartments;
+			this.reservations = reservations;
+			this.active = active;
+		}
+
 		public ArrayList<Long> getReservations() {
 			return reservations;
 		}
