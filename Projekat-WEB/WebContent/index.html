@@ -20,6 +20,7 @@
         <ul id="sidebar">
             <li class="sidebar-item" id="search_li"><a>Search</a></li>
             <li class="sidebar-item" id="profile_li"><a>User Profile</a></li>
+            <li class="sidebar-item" id="add_new_ap_li"><a>Add new apartment</a></li>
         </ul>
     </div>
 
@@ -176,6 +177,48 @@
     </div>
     
     <!-- *********** -->
+
+    <!-- Dodavanje apartmana-->
+
+
+    <div class="div_dodavanje_apartmana" id="div_dodavanje_apartmana" style="text-align: center;">
+        <h1>Add new apartment</h1></br>
+        <form id="add_apartment_form">
+            <table>
+                <tr>
+                    <th>Type: </th>
+                    <td>
+                        <select name="ap_type" id="ap_type">
+                        <option value="WHOLE_APARTMENT">apartment</option>
+                        <option value="ROOM">room</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Number of rooms: </th>
+                    <td><input type="number" name="number_rooms"></td>
+                </tr>
+                <tr>
+                    <th>Number of guests: </th>
+                    <td><input type="number" name="number_guests"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p align="right" id="err" style="color: red"></p></td> 
+                </tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr><td colspan="2"><p align="center" id="errLogin" class="errorMsg"></p></td></tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr>
+                    <td colspan="2" id="submit_prijava">
+                        <input type="submit" id="btn_login_submit" style="float: right; text-align: center;" value=" Submit ">
+                    </td> 
+                </tr>
+            </table>
+        </form>
+        </br>
+      </div>
+
+      <!--  ***********************************************************-->
 
     <!-- modal -->
     <div id="mod_pretraga" class="modal" hidden>

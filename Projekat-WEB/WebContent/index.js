@@ -4,6 +4,8 @@ function clearWorkspace(){
     $('#div_registracija').hide();
     $('#user-profile').hide();
     $('#user-list').hide();
+    $('#div_dodavanje_apartmana').hide();
+    
  //   $('#logout_li').hide();
  //   $('login_li').show();
  //   $('users_li').show();
@@ -27,6 +29,11 @@ $(document).ready(function(){
         clearWorkspace();
         $('#div_prijava').show();
         $('#dugme_reg').show();
+    });
+
+    $('#add_new_ap_li').click(function() {
+        clearWorkspace();
+        $('#div_dodavanje_apartmana').show();
     });
     
 
