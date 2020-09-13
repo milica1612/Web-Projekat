@@ -56,7 +56,7 @@ public class LoginService {
 		}
 		request.getSession().setAttribute("user", loggedIn);
 		
-		return Response.status(200).build();
+		return Response.status(200).entity(loggedIn).build();
 	}
 	
 	@GET

@@ -43,7 +43,7 @@ public class RegistrationService {
 		
 		System.out.println("registration");
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		User registered;
+		User registered = null;
 		try {
 			registered = (User) userDao.addNewUser(user);
 			
@@ -56,7 +56,7 @@ public class RegistrationService {
 			e.printStackTrace();
 		}
 		
-		return Response.status(200).build();
+		return Response.status(200).entity(registered).build();
 	}
 	
 }

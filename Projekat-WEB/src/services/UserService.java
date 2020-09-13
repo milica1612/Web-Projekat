@@ -3,7 +3,6 @@ package services;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
-import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
@@ -14,11 +13,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
-import com.fasterxml.jackson.core.type.TypeReference;
 
 import beans.User;
 import dao.UserDAO;
@@ -63,33 +59,17 @@ public class UserService {
 	}
 		
 	@GET
-	@Path("/username")
+	@Path("/search/{username}/{gender}/{role}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> findUsersByUserName(@QueryParam("username") String username, @Context HttpServletRequest request) {
+	public Collection<User> findUsersByUserName(@PathParam("username") String username,
+												@PathParam("gender") String gender,
+												@PathParam("role") String role,
+												@Context HttpServletRequest request) {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		return userDao.findUserByUserName(username);
+		return userDao.search(username, gender, role);
 	}
 	
-	@GET
-	@Path("/gender")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Collection<User> findUsersByGender(@QueryParam("gender") String gender, @Context HttpServletRequest request) {
-		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		return userDao.findUserByGender(gender);
-	}
-	
-	@GET
-	@Path("/role")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> findUsersByRole(@QueryParam("role") String role, @Context HttpServletRequest request) {
-		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-		return userDao.findUserByRole(role);
-	}
-	
-
 	
 	@PUT
 	@Path("/{username}")

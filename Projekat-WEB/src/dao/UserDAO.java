@@ -24,7 +24,17 @@ public class UserDAO {
 	public UserDAO(String contextPath) throws NoSuchAlgorithmException, IOException {
 		this.contextPath = contextPath;
 		System.out.println(contextPath);
-		users = loadUsers(contextPath);
+		
+		addTestData();
+//		users = loadUsers(contextPath);
+	}
+	
+	public void addTestData() {
+		ArrayList<Long> emptyList = new ArrayList<Long>();
+		User user1 = new User("milica", "milica", "Milica", "Milica", Gender.FEMALE, Role.GUEST, emptyList, emptyList, emptyList, true);
+		User user2 = new User("zorana", "zorana", "Zorana", "Zorana", Gender.FEMALE, Role.GUEST, emptyList, emptyList, emptyList, true);
+		users.put(user1.getUsername(), user1);
+		users.put(user2.getUsername(), user2);
 	}
 	
 	public User addNewUser(User user) throws IOException, NoSuchAlgorithmException{
@@ -172,40 +182,54 @@ public class UserDAO {
 		return retUsers;
 	}
 
-	public Collection<User> findUserByUserName(String username) {
-		ArrayList<User> active = (ArrayList<User>) getAllUsers();
+	public ArrayList<User> findUserByUserName(String username, ArrayList<User> userList) {
 		ArrayList<User> retUsers = new ArrayList<User>();
+		if(username.equals("empty_string")) {
+			return userList;
+		}
 		
-		for (User user : active) {
-			if(user.getUsername().contains(username)) {
+		for (User user : userList) {
+			if(user.getUsername().toLowerCase().contains(username.toLowerCase())) {
 				retUsers.add(user);
 			}
 		}
 		return retUsers;
 	}
 
-	public Collection<User> findUserByRole(String role) {
-		ArrayList<User> active = (ArrayList<User>) getAllUsers();
+	public ArrayList<User> findUserByRole(String role, ArrayList<User> userList) {
 		ArrayList<User> retUsers = new ArrayList<User>();
+		if(role.equals("empty_string")) {
+			return userList;
+		}
 		
-		for (User user : active) {
-			if(user.getRole().equals(getRole(role))) {
+		for (User user : userList) {
+			if(user.getRole().toString().equals(role)) {
 				retUsers.add(user);
 			}
 		}
 		return retUsers;
 	}
 
-	public Collection<User> findUserByGender(String gender) {
-		ArrayList<User> active = (ArrayList<User>) getAllUsers();
+	public ArrayList<User> findUserByGender(String gender, ArrayList<User> userList) {
 		ArrayList<User> retUsers = new ArrayList<User>();
+		if(gender.equals("empty_string")) {
+			return userList;
+		}
 		
-		for (User user : active) {
-			if(user.getGender().equals(getGender(gender))) {
+		for (User user : userList) {
+			if(user.getGender().toString().equals(gender)) {
 				retUsers.add(user);
 			}
 		}
 		return retUsers;
+	}
+	
+	public Collection<User> search(String username, String gender, String role) {
+		ArrayList<User> filterByUsername = findUserByUserName(username, new ArrayList<User>(users.values()));
+		ArrayList<User> filterByGender = findUserByGender(gender, filterByUsername);
+		ArrayList<User> filterByRole = findUserByRole(role, filterByGender);
+		
+		return filterByRole;
 	}
 
 	public void addNewApartment(String host, Apartment apartment) throws NoSuchAlgorithmException, IOException {
@@ -221,5 +245,5 @@ public class UserDAO {
 		user.setRentedApartments(added.getId());
 		saveUsers(contextPath);
 	}
-		
+
 }
