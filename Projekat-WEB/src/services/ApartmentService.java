@@ -2,11 +2,13 @@ package services;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -62,4 +64,19 @@ public class ApartmentService {
 			
 		return added;
 		}
+	
+	@GET
+	@Path("/all")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Apartment> getAllApartments(@Context HttpServletRequest request) {
+		
+		ApartmentDAO apartmentDao = (ApartmentDAO) ctx.getAttribute("apartmentDAO");
+		User user = (User) request.getSession().getAttribute("user");
+		
+		String newUser = user.getRole().toString();
+		
+		return apartmentDao.getAllApartments(newUser, user);
+	}
+
 }

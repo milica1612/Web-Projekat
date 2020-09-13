@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -78,5 +79,39 @@ public class ApartmentDAO {
 	    apartmentFile.createNewFile();
 	    mapper.writeValue(apartmentFile, apartments);
 	}
-	
+
+	public Collection<Apartment> getAllApartments(String role, User user) {
+		ArrayList<Apartment> retApartments = new ArrayList<Apartment>();
+		
+		switch (role) {
+		case "GUEST":
+			for (Apartment apartment : apartments.values()) {
+				if(apartment.isActive() && apartment.getStatus().equals("ACTIVE")) {
+					retApartments.add(apartment);
+				}
+			}
+			break;
+		case "HOST":
+			ArrayList<Long> ap = user.getApartmentsForRent();
+			for (Apartment apartment : apartments.values()) {
+					if(apartment.isActive() && apartment.getStatus().equals("ACTIVE") && ap.contains(apartment.getId())) {
+						retApartments.add(apartment);
+					}
+			}
+			break;
+		case "ADMINISTRATOR": 
+			for (Apartment apartment : apartments.values()) {
+				if(apartment.isActive()){
+					retApartments.add(apartment);
+				}
+			}
+			break;
+			
+		default:
+			break;
+		}
+		
+		return retApartments;
+	}
+
 }
