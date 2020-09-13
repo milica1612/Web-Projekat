@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src = "jquery-3.3.1.min.js"></script>
+    <script src = "index.js"></script>
+    <script src = "registration.js"></script>
+    <script src = "profile.js"></script>
+    <script src = "users.js"></script>
+</head>
+<body>
+    <div>
+        <ul id="navbar">
+            <li class="navbar-item" id="users_li"><a>Users</a></li>
+            <li class="navbar-item" id="login_li" style="float: right;"><a>Login</a></li>
+        </ul>
+        <ul id="sidebar">
+            <li class="sidebar-item" id="search_li"><a>Search</a></li>
+            <li class="sidebar-item" id="profile_li"><a>User Profile</a></li>
+        </ul>
+    </div>
+
+    <!-- login -->
+    <div class="div_reg" id="div_prijava" style="text-align: center;">
+        <h1>User login</h1></br>
+        <form id="forma">
+            <table>
+                <tr>
+                    <th>Username: </th>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <th>Password: </th>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p align="right" id="err" style="color: red"></p></td> 
+                </tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr><td colspan="2"><p align="center" id="errLogin" class="errorMsg"></p></td></tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr>
+                    <td colspan="2" id="submit_prijava">
+                        <input type="submit" id="btn_login_submit" style="float: right; text-align: center;" value=" Submit ">
+                    </td> 
+                </tr>
+            </table>
+        </form>
+        </br>
+      </div>
+  
+    <div id="dugme_reg" style="text-align: center;">
+        <h2>If you do not have an account, create one here</h2>
+        <button id="btn_reg">Register</button>
+    </div>
+    <!-- **************** -->
+    
+    <!-- registration -->
+    <div class="div_reg" id="div_registracija" style="text-align: center;" hidden>
+        <h1>Registration form</h1></br>
+        
+        <form id="forma_reg" style="display: inline-block;">
+                <table id="tabela_reg">
+                    <tr>
+                        <th>Username:* </th>
+                        <td><input type="text" name="username_reg"></td>
+                    </tr>
+                    <tr>
+                        <th>Password:* </th>
+                        <td><input type="password" name="password_reg"></td>
+                    </tr>
+                    <tr>
+                      <th>Repeated Password:* </th>
+                      <td><input type="password" name="password_reg1"></td>
+                  </tr>
+                    <tr>
+                        <th>First Name:* </th>
+                        <td><input type="text" name="ime_reg" id="ime"></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:* </th>
+                        <td><input type="text" name="prezime_reg"></td>
+                    </tr>
+                    <tr>
+                        <th>Gender:* </th>
+                        <td>
+                              <input type="radio" id="male" name="gender" value="MALE" checked>
+                                  <label for="male">Male</label><br>
+                              <input type="radio" id="female" name="gender" value="FEMALE">
+                                  <label for="female">Female</label><br>
+                        </td>
+                    </tr>
+                    
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr><td colspan="2"><p align="center" id="errReg" class="errorMsg"></p></td></tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>
+                        <td colspan="2" id="submit_reg"><input type="submit" value=" Submit "></td> 
+                    </tr>
+                    <tr>
+                        <td colspan="2"><p align="left" class="footerMsg">* - required fields</p></td> 
+                    </tr>
+            </table>
+        </form>
+    </div>
+    <!-- *************** -->
+
+    <!-- user-profile -->
+    <div id="user-profile" hidden>
+        <table id="user-profile-table">
+            <tr>
+                <th>Username</th>
+                <td><input type="text" name="username_profile" id="user-profile-table-username" disabled></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="text" name="username_profile" id="user-profile-table-password"></td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="username_profile" id="user-profile-table-firstName"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="username_profile" id="user-profile-table-lastName"></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <input type="radio" id="profileMale" name="profileGender" value="MALE">
+                        <label for="male">Male</label><br>
+                    <input type="radio" id="profileFemale" name="profileGender" value="FEMALE">
+                        <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button id="user-profile-table-send">Send</button></td>
+            </tr>
+        </table>
+    </div>
+    <!-- ************** -->
+
+    <!-- user-list -->
+    <div id="user-list" hidden>
+        <input type="text" name="" id="search-user" style="width: 150;">
+        <div>
+            <label for="gender">Choose gender:</label>
+            <select class = "box" name="gender" id="user-list-gender">
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+                <option value="empty_string"></option>
+            </select>
+        </div>
+        <div>
+            <label for="role">Choose role:</label>
+            <select name="role" id="user-list-role">
+                <option value="GUEST">GUEST</option>
+                <option value="HOST">HOST</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="empty_string"></option>
+            </select>
+        </div>
+        <table id="user-list-table">
+            <thead>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Role</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    
+    <!-- *********** -->
+
+    <!-- modal -->
+    <div id="mod_pretraga" class="modal" hidden>
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <!-- header -->
+            </div>
+            <div class="modal-body">
+               <!-- modal body -->
+            </div>
+            <div class="modal-footer">
+                <!-- footer -->
+            </div>
+          </div>
+    </div>
+    <!-- ********** -->
+
+</body>
+</html>
