@@ -4,16 +4,23 @@ function clearWorkspace(){
     $('#div_registracija').hide();
     $('#user-profile').hide();
     $('#user-list').hide();
+ //   $('#logout_li').hide();
+ //   $('login_li').show();
+ //   $('users_li').show();
 }
 
 activeUser = null;
 
 $(document).ready(function(){
-    console.log('document index ready');
-
+	$('login_li').show();
+	$('users_li').show();
+	$('#logout_li').hide();
+	console.log('document index ready');
+    
     $('#btn_reg').click(function(){
         clearWorkspace();
         $('#div_registracija').show();
+        $('#login_li').show();
     });
 
     $('#login_li').click(function() {
@@ -21,8 +28,11 @@ $(document).ready(function(){
         $('#div_prijava').show();
         $('#dugme_reg').show();
     });
+    
 
     $('#btn_login_submit').click(function(){
+    	$('#login_li').hide();
+        $('#logout_li').show();
         console.log('submit');
         event.preventDefault();
         var username = $('input[name="username"]').val();
@@ -58,8 +68,27 @@ $(document).ready(function(){
            }
         });
      });
+    
+    $('#logout_li').click(function(){
+ 	   clearWorkspace();
+        $('#div_prijava').show();
+        $('#dugme_reg').show();
+        $('#login_li').show();
+        $('#logout_li').hide();
+        $.ajax({
+     	   type: 'get',
+     	   url: 'rest/logout',
+     	   contentType: 'application/json',
+     	   success: function(response) {
+     		   console.log(response);
+                activeUser = null;
+                alert("Successfully logout!");
+     	   }
+        });
+    });
 
 });
+
 
 function showFuncByRole(userRole){
     clearWorkspace();
