@@ -15,6 +15,7 @@ $(document).ready(function(){
     // CLOSE MODAL
     $('.modal-header span').click(function() {
         $('#mod_pretraga').hide();
+        $('#mod_amenities').hide();
     });
 
     $('#users_li').click(function() {

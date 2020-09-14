@@ -105,6 +105,8 @@ input[type="submit"] {
     border-radius: 10px;
     cursor: pointer;
 }
+
+
 input[type="submit"]:active {
     background-color: #999;
     color: white;
@@ -114,10 +116,25 @@ input[type="submit"]:active {
     height: 4.5ex;
     border-radius: 10px;
 }
+
 input[type="submit"]:hover {
     background-color: #e7e7e7;
     cursor: pointer;
 }
+
+input[type="button"]{
+    color: black;
+    border: 2px solid #ccc;
+    padding: 16px 32px;
+    text-decoration: none;
+    width: 10em;
+    padding: 5px;
+    height: 4ex;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+  }
 
 button {
     display: inline-block;
@@ -134,11 +151,12 @@ button {
     box-shadow: 0 4px #999;
 }
 
+
 form#forma {
     display: inline-block;
 }
 
-input[type=text], input[type=password], input[type=number], textarea, .multi_select{
+input[type=text],[type = "file"], input[type=password], input[type=number], input[type=time], textarea, .multi_select, .selection{
     width: 100%;
     padding: 5px;
     margin: 8px 0;
