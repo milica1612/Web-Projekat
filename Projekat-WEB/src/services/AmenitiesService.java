@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
@@ -17,6 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Amenities;
+import beans.Apartment;
 import beans.User;
 import dao.AmenitiesDAO;
 import dao.ApartmentDAO;
@@ -48,6 +50,17 @@ public class AmenitiesService {
 		AmenitiesDAO amenitiesDAO = (AmenitiesDAO) ctx.getAttribute("amenitiesDAO");
 		System.out.println(contextPath);
 		return amenitiesDAO.addNewAmenities(amenities);
+	}
+	
+	@GET
+	@Path("/all")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Amenities> getAllAmenities(@Context HttpServletRequest request) {
+		
+		AmenitiesDAO amenitiesDAO = (AmenitiesDAO) ctx.getAttribute("amenitiesDAO");
+		
+		return amenitiesDAO.getAllAmenities();
 	}
 	
 	@PUT

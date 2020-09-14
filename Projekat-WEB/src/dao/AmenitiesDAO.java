@@ -3,6 +3,8 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -102,5 +104,15 @@ public class AmenitiesDAO {
 	public Amenities deleteAmenitie(Long id) {
 		
 		return null;
+	}
+
+	public Collection<Amenities> getAllAmenities() {
+		ArrayList<Amenities> retList = new ArrayList<Amenities>();
+		for (Amenities am : amenities.values()) {
+			if(am.isActive()) {
+				retList.add(am);
+			}
+		}
+		return retList;
 	}
 }
