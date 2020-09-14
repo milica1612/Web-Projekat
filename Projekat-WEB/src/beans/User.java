@@ -14,11 +14,11 @@ public class User {
 		private ArrayList<Long> rentedApartments;
 		
 		
-		public void setApartmentForRent(ArrayList<Long> apartmentsForRent) {
+		public void setApartmentsForRent(ArrayList<Long> apartmentsForRent) {
 			this.apartmentsForRent = apartmentsForRent;
 		}
 
-		public void setRentedApartment(ArrayList<Long> rentedApartments) {
+		public void setRentedApartments(ArrayList<Long> rentedApartments) {
 			this.rentedApartments = rentedApartments;
 		}
 		private ArrayList<Long> reservations;
@@ -81,13 +81,13 @@ public class User {
 		public ArrayList<Long> getApartmentsForRent() {
 			return apartmentsForRent;
 		}
-		public void setApartmentsForRent(long apartmentForRent) {
+		public void addApartmentsForRent(long apartmentForRent) {
 			this.apartmentsForRent.add(apartmentForRent);
 		}
 		public ArrayList<Long> getRentedApartments() {
 			return rentedApartments;
 		}
-		public void setRentedApartments(long rentedApartment) {
+		public void addRentedApartments(long rentedApartment) {
 			this.rentedApartments.add(rentedApartment);
 		}
 		public User(String username, String password, String firstName, String lastName, Gender gender, Role role,

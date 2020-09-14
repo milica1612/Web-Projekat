@@ -103,30 +103,16 @@ public class UserDAO {
 	}
 	
 	//ucitavanje liste korisnika iz fajla
-	public HashMap<String,User> loadUsers(String contextPath) {
+	public HashMap<String,User> loadUsers(String contextPath) throws IOException {
 	    ObjectMapper mapper = new ObjectMapper();
 	    File userFile = new File(contextPath + "users.json");
 	    
 	    boolean created;
-		try {
-			created = userFile.createNewFile();
-			if (created) {
-	       
+		created = userFile.createNewFile();
+		if (created) {
 	       mapper.writeValue(userFile, users);
-	    }
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-	    
-	 
-	    try {
-			return mapper.readValue(userFile, new TypeReference<HashMap<String,User>>() {});
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    return null;
+	       return mapper.readValue(userFile, new TypeReference<HashMap<String,User>>() {});
 	}
 	
 	//upisivanje u novi fajl 
@@ -236,14 +222,14 @@ public class UserDAO {
 	public void addNewApartment(String host, Apartment apartment) throws NoSuchAlgorithmException, IOException {
 		
 		User user = users.get(host);
-		user.setApartmentsForRent(apartment.getId());	
+		user.addApartmentsForRent(apartment.getId());	
 		saveUsers(contextPath);
 	}
 
 	public void addNewReservation(String guest, Reservation added) throws NoSuchAlgorithmException, IOException {
 		
 		User user = users.get(guest);
-		user.setRentedApartments(added.getId());
+		user.addRentedApartments(added.getId());
 		saveUsers(contextPath);
 	}
 
