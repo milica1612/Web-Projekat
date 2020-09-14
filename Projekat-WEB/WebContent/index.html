@@ -9,6 +9,7 @@
     <script src = "registration.js"></script>
     <script src = "profile.js"></script>
     <script src = "users.js"></script>
+    <script src = "addApartment.js"></script>
 </head>
 <body>
     <div>
@@ -178,17 +179,17 @@
     
     <!-- *********** -->
 
-    <!-- Dodavanje apartmana-->
+    <!------------------------ Dodavanje apartmana ------------------------>
 
 
-    <div class="div_dodavanje_apartmana" id="div_dodavanje_apartmana" style="text-align: center;">
+    <div class="div_reg" id="div_dodavanje_apartmana" style="text-align: center;" hidden>
         <h1>Add new apartment</h1></br>
         <form id="add_apartment_form">
             <table>
                 <tr>
                     <th>Type: </th>
                     <td>
-                        <select name="ap_type" id="ap_type">
+                        <select name="ap_type" id="ap_type" class = "selection">
                         <option value="WHOLE_APARTMENT">apartment</option>
                         <option value="ROOM">room</option>
                         </select>
@@ -201,6 +202,35 @@
                 <tr>
                     <th>Number of guests: </th>
                     <td><input type="number" name="number_guests"></td>
+                </tr>
+                <tr>
+                    <th>Cost per night:</th>
+                    <td><input type="number" id="cost_per_night"></td>
+                 </tr>
+                <tr>
+                    <th>Available for renting:</th>
+                    <td>
+                       <div class="input-group date form-group" id="datepickerMulti">
+                          <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+                       </div>	                  
+                    </td>
+                </tr>
+                <tr>
+                    <th>Check-in time:</th>
+                    <td><input type="time" id="time_in" name="appt" ></td>
+                </tr>
+                <tr>
+                    <th>Ckeck-out time:</th>
+                    <td><input type="time" id="check_out" name="appt" ></td>
+                </tr>
+                <tr>
+                    <th>Images:</th>
+                    <td> <input type="file" id="files" name="files[]" multiple="multiple" class="multiupload"></td>
+                </tr>
+                <tr>
+                    <th>Amenities:</th>
+                    <td><input type="button" value="Add Amenities" id="add_amenties_ap"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><p align="right" id="err" style="color: red"></p></td> 
@@ -218,7 +248,31 @@
         </br>
       </div>
 
-      <!--  ***********************************************************-->
+      <!--  *********************************************************** -->
+
+      <!-- modalni za dodavanje sadrzaja apartmanima -->
+        <div id="mod_amenities" class="modal" hidden>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <!-- header -->
+                </div>
+                <div class="modal-body">
+                    <table id="amenities-list-table-modal">
+                        <thead>
+                            <th>Name</th>
+                            <th></th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <!-- footer -->
+                 </div>
+            </div>
+    </div>
+    <!-- ********** -->
+
 
     <!-- modal -->
     <div id="mod_pretraga" class="modal" hidden>

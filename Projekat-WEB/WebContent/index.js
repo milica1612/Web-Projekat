@@ -35,6 +35,7 @@ $(document).ready(function(){
         clearWorkspace();
         $('#div_dodavanje_apartmana').show();
     });
+
     
 
     $('#btn_login_submit').click(function(){
