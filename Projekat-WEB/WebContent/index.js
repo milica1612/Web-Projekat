@@ -5,10 +5,8 @@ function clearWorkspace(){
     $('#user-profile').hide();
     $('#user-list').hide();
     $('#div_dodavanje_apartmana').hide();
-    
- //   $('#logout_li').hide();
- //   $('login_li').show();
- //   $('users_li').show();
+    $('#div_dodavanje_sadrzaja').hide();
+
 }
 
 activeUser = null;
@@ -36,7 +34,10 @@ $(document).ready(function(){
         $('#div_dodavanje_apartmana').show();
     });
 
-    
+    $('#add_new_amenitie_li').click(function() {
+        clearWorkspace();
+        $('#div_dodavanje_sadrzaja').show();
+    });
 
     $('#btn_login_submit').click(function(){
     	$('#login_li').hide();

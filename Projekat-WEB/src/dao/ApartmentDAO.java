@@ -120,9 +120,6 @@ public class ApartmentDAO {
 				}
 			}
 			break;
-			
-		default:
-			break;
 		}
 		
 		return retApartments;
