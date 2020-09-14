@@ -13,8 +13,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Apartment;
 import beans.Comment;
+import beans.Reservation;
+import beans.User;
+import dao.ApartmentDAO;
 import dao.CommentDAO;
+import dao.ReservationDAO;
 
 
 @Path("/comments")
@@ -36,21 +41,32 @@ public class CommentService {
 		}
 	}
 	
-	@POST
-	@Path("")
+	/*@POST
+	@Path("/addcomment")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Comment postComment(Comment comment, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
+	public Comment postComment(Apartment apartment, Comment comment, @Context HttpServletRequest request) throws NoSuchAlgorithmException {
 		
 		System.out.println("comment");
 		CommentDAO commentDao = (CommentDAO) ctx.getAttribute("commentDAO");
 		
-		Comment added = (Comment) commentDao.addNewComment(comment);
-			
+		User user = (User) request.getSession().getAttribute("user");
+		
+		ReservationDAO reservationDao = (ReservationDAO) ctx.getAttribute("reservationDAO");
+				
+		String guest = user.getUsername();
+		comment.setGuest(guest);
+		Comment added = null;
+		
+		if(reservationDao.newComment(apartment, user)) {
+		
+		added = (Comment) commentDao.addNewComment(comment);
+		}
+		
 		if(added == null) {
 			return null;
 		}
 			
 		return added;
-		}
+		}*/
 }

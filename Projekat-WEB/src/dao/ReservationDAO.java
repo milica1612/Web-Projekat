@@ -3,6 +3,7 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,6 +13,7 @@ import beans.Apartment;
 import beans.ApartmentStatus;
 import beans.Reservation;
 import beans.Status;
+import beans.User;
 
 public class ReservationDAO {
 	
@@ -80,4 +82,17 @@ public class ReservationDAO {
 	    reservationFile.createNewFile();
 	    mapper.writeValue(reservationFile, reservations);
 	}
+	
+	public boolean newComment(Apartment apartment, User user) {
+	
+		for (Reservation reservation : reservations.values()) {
+			if((reservation.getApartment() == (apartment.getId())) && (reservation.getGuest() == user.getUsername())) {
+				if(reservation.getStatus().equals("COMPLETED") || reservation.getStatus().equals("REJECTED")) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+		
 }

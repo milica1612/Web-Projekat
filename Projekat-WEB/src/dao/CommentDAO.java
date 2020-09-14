@@ -22,10 +22,6 @@ public class CommentDAO {
 	
 	public Comment addNewComment(Comment comment) {	
 		
-		if(comments.containsKey(comment.getId())) {
-			return null;
-		}
-		
 		Comment newComment = createNewComment(comment);
 		comments.put(newComment.getId(), newComment);
 		try {
@@ -39,6 +35,7 @@ public class CommentDAO {
 	}
 	
 	private Comment createNewComment(Comment comment) {
+		
 		long id = comments.size() + 1;
 		Comment newComment = new Comment(
 				id,

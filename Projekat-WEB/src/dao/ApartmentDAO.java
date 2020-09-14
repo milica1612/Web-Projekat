@@ -3,6 +3,7 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,9 +11,12 @@ import java.util.HashMap;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import beans.Address;
 import beans.Amenities;
 import beans.Apartment;
 import beans.ApartmentStatus;
+import beans.ApartmentType;
+import beans.Location;
 import beans.Role;
 import beans.User;
 
@@ -22,11 +26,21 @@ public class ApartmentDAO {
 	//private HashMap<String, Amenities> amenities = new HashMap<String, Amenities>(); 
 	private String contextPath;
 	
-	public ApartmentDAO(String path) {
-		super();
+	public ApartmentDAO(String path) throws NoSuchAlgorithmException, IOException {
 		this.contextPath = path;
+		System.out.println(contextPath);
+		
+	//	loadApartments(contextPath);
 	}
 
+	public void addTestData() {
+		Address a = new Address(3, "", "", 1);
+		Location location = new Location(3, 3, 3, a);
+		Apartment apa1 = new Apartment(6, ApartmentType.ROOM, 5, 5, location, "zorana",
+				30, null, null, ApartmentStatus.ACTIVE, true);
+		apartments.put(apa1.getId(), apa1);
+	}
+	
 	public Apartment addNewApartment(Apartment apartment) {	
 		
 		Apartment newApartment = createNewApartment(apartment);
@@ -113,5 +127,6 @@ public class ApartmentDAO {
 		
 		return retApartments;
 	}
-
+	
+	
 }

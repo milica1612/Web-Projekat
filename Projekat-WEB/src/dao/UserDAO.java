@@ -10,6 +10,7 @@ import java.util.HashMap;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import beans.Apartment;
 import beans.Gender;
 import beans.Reservation;
@@ -25,8 +26,8 @@ public class UserDAO {
 		this.contextPath = contextPath;
 		System.out.println(contextPath);
 		
-		addTestData();
-//		users = loadUsers(contextPath);
+	//	addTestData();
+		users = loadUsers(contextPath);
 	}
 	
 	public void addTestData() {
@@ -104,7 +105,7 @@ public class UserDAO {
 	//ucitavanje liste korisnika iz fajla
 	public HashMap<String,User> loadUsers(String contextPath) {
 	    ObjectMapper mapper = new ObjectMapper();
-	    File userFile = new File(contextPath + "/users.json");
+	    File userFile = new File(contextPath + "users.json");
 	    
 	    boolean created;
 		try {
@@ -131,7 +132,7 @@ public class UserDAO {
 	//upisivanje u novi fajl 
 	public void saveUsers(String contextPath) throws IOException, NoSuchAlgorithmException {
 	    ObjectMapper mapper = new ObjectMapper();
-	    File userFile = new File(contextPath + "/users.json");
+	    File userFile = new File(contextPath + "users.json");
 	    userFile.createNewFile();
 	    mapper.writeValue(userFile, users);
 	}

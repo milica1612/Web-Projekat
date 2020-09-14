@@ -12,6 +12,15 @@ public class User {
 		private Role role;
 		private ArrayList<Long> apartmentsForRent = new ArrayList<Long>();
 		private ArrayList<Long> rentedApartments;
+		
+		
+		public void setApartmentForRent(ArrayList<Long> apartmentsForRent) {
+			this.apartmentsForRent = apartmentsForRent;
+		}
+
+		public void setRentedApartment(ArrayList<Long> rentedApartments) {
+			this.rentedApartments = rentedApartments;
+		}
 		private ArrayList<Long> reservations;
 		private boolean active;
 		

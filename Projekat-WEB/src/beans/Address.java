@@ -11,7 +11,7 @@ public class Address {
 		
 	}
 	
-	public Address(Long id, String streetAndNumber, String city, long postNumber) {
+	public Address(long id, String streetAndNumber, String city, long postNumber) {
 		super();
 		this.id = id;
 		this.streetAndNumber = streetAndNumber;
