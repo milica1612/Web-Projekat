@@ -103,7 +103,10 @@ public class AmenitiesDAO {
 
 	public Amenities deleteAmenitie(Long id) {
 		
-		return null;
+		Amenities am = amenities.get(id);
+		am.setActive(false);
+		return am;
+		
 	}
 
 	public Collection<Amenities> getAllAmenities() {

@@ -37,6 +37,16 @@ public class UserService {
 		}
 	}
 	
+	@GET
+	@Path("")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> getAllUsers(@Context HttpServletRequest request) {
+		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
+
+		return userDao.getAllUsers();
+	}
+	
 	//pronalazi ulogovanog korisnika
 	@GET
 	@Path("/active")
@@ -46,16 +56,6 @@ public class UserService {
 		User activeUser = (User) request.getSession(false).getAttribute("user");
 		
 		return userDao.getUser(activeUser);
-	}
-	
-	@GET
-	@Path("")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> getAllUsers(@Context HttpServletRequest request) {
-		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
-
-		return userDao.getAllUsers();
 	}
 		
 	@GET
