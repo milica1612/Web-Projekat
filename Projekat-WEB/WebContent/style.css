@@ -169,6 +169,19 @@ input[type=text],[type = "file"], input[type=password], input[type=number], inpu
     font-size: 15px;
 }
 
+input[type="date"]{
+	padding: 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 5px;
+    font-size: 15px;
+	
+}
+
 /* profile page */
 div#user-profile {
     margin-left: 30%; 
