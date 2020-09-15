@@ -6,7 +6,8 @@ function clearWorkspace(){
     $('#user-list').hide();
     $('#div_dodavanje_apartmana').hide();
     $('#div_dodavanje_sadrzaja').hide();
-
+    $('#amenities-list-table').hide();
+    $('#amenities-list').hide();
 }
 
 activeUser = null;
@@ -37,6 +38,8 @@ $(document).ready(function(){
     $('#add_new_amenitie_li').click(function() {
         clearWorkspace();
         $('#div_dodavanje_sadrzaja').show();
+        $('#amenities-list').show();
+        $('#amenities-list-table').show();
     });
 
     $('#btn_login_submit').click(function(){

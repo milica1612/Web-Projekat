@@ -151,6 +151,21 @@ button {
     box-shadow: 0 4px #999;
 }
 
+.btnSelect{
+	display: inline-block;
+    width: 100px;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px #999;
+}
 
 form#forma {
     display: inline-block;
@@ -226,6 +241,12 @@ div#user-list {
     width: 65%;
 }
 
+div#amenities-list {
+    margin-top: 10%;
+    margin-left: 30%;
+    width: 65%;
+}
+
 #user-list-table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -242,6 +263,32 @@ div#user-list {
 #user-list-table tr:hover {background-color: #ddd;}
 
 #user-list-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#amenities-list-table {
+	
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+#user-list-table td, #amenities-list-table th {
+	width: 150px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#ameinities-list-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#amenities-list-table tr:hover {background-color: #ddd;}
+
+#amenities-list-table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

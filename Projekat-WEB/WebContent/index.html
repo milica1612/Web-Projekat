@@ -23,7 +23,7 @@
             <li class="sidebar-item" id="search_li"><a>Search</a></li>
             <li class="sidebar-item" id="profile_li"><a>User Profile</a></li>
             <li class="sidebar-item" id="add_new_ap_li"><a>Add new apartment</a></li>
-            <li class="sidebar-item" id="add_new_amenitie_li"><a>Add new amenitie</a></li>            
+            <li class="sidebar-item" id="add_new_amenitie_li"><a>Amenities</a></li>            
         </ul>
     </div>
 
@@ -149,6 +149,7 @@
 
     <!-- user-list -->
     <div id="user-list" hidden>
+    	<h1 style="text-align: center;">Users</h1></br>
         <input type="text" name="" id="search-user" style="width: 150;">
         <div>
             <label for="gender">Choose gender:</label>
@@ -257,9 +258,19 @@
 
     <!------------------------ Dodavanje sadrzaja apartmana ------------------------>
 
-
+	<div id="amenities-list" hidden>
+		<h1 style="text-align: center;" >Amenities</h1></br>
+		 <table id="amenities-list-table">
+	     	<thead>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </thead>
+          <tbody></tbody>
+       	</table>
+   	</div>
     <div class="div_reg" id="div_dodavanje_sadrzaja" style="text-align: center;" hidden>
-        <h1>Add new amenitie</h1></br>
+       <h1>Add new amenitie</h1></br>
         <form id="add_amenitie_form">
             <table>
                 <tr>
