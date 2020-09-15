@@ -41,7 +41,7 @@ public class CommentService {
 		}
 	}
 	
-	/*@POST
+	@POST
 	@Path("/addcomment")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -68,5 +68,5 @@ public class CommentService {
 		}
 			
 		return added;
-		}*/
+		}
 }
