@@ -262,7 +262,7 @@ div#amenities-list {
 
 #user-list-table tr:hover {background-color: #ddd;}
 
-#user-list-table th {
+#user-list-table th , #amenities-list-table-modal th{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -270,7 +270,7 @@ div#amenities-list {
     color: white;
 }
 
-#amenities-list-table {
+#amenities-list-table, #amenities-list-table-modal {
 	
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -278,7 +278,7 @@ div#amenities-list {
 }
 
 
-#user-list-table td, #amenities-list-table th {
+#user-list-table td, #amenities-list-table th, #amenities-list-table-modal th {
 	width: 150px;
     border: 1px solid #ddd;
     padding: 8px;
@@ -288,10 +288,14 @@ div#amenities-list {
 
 #amenities-list-table tr:hover {background-color: #ddd;}
 
-#amenities-list-table th {
+#amenities-list-table-modal td {
+	text-align: center;
+	padding: 15px;
+}
+#amenities-list-table th , #amenities-list-table-modal th{
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #4CAF50;
     color: white;
 }

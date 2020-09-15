@@ -1,8 +1,35 @@
+function putInTable(amenitie) {
+    let name = $('<td>'+ amenitie.name +'</td>');
+    let checkboxx = $('<td>' + '<input type="checkbox" id="' + amenitie.id + '" value="' + amenitie.name + '"' + '</td>');
+    let tr = $('<tr></tr>');
+    tr.append(name).append(checkboxx);
+    $('#amenities-list-table-modal tbody').append(tr);
+
+}
+
 $(document).ready(function() {
 
     $('#add_amenties_ap').click(function() {
-        $('#mod_amenities').show();
-    })
+    	$('#mod_amenities').show();
+            $.ajax({
+                type: "get",
+                url: "rest/amenities/all",
+                contentType: "application/json",
+                success: function(amenities) {
+                    console.log(amenities);
+                    $('#amenities-list-table-modal tbody').empty();
+                    for(let amenitie of amenities){
+                    	putInTable(amenitie);
+                    }
+                    let tr = '<tr><td colspan = "2"><input type="submit" id="btn_add_amenities_to_apartment" text-align: center;" value=" Submit "></td></tr>';
+                    $('#amenities-list-table-modal tbody').append(tr);
+                }
+            
+            })
+       
+    });
+    
+    
 
     
     $('#btn_add_apartment_submit').click(function(){
