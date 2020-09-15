@@ -21,7 +21,9 @@ $(document).ready(function(){
                 success: function(amenities) {
                     console.log(amenities);
                     $('#amenities-list').show();
+                    $('#amenities-list-table').show();
                     $('#amenities-list-table tbody').empty();
+                    $('#div_dodavanje_sadrzaja').show();
                     for(let amenitie of amenities){
                         listAmenitie(amenitie);
                     }
