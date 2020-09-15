@@ -213,12 +213,14 @@
                 <tr>
                     <th>Available for renting:</th>
                     <td>
-                       <div class="input-group date form-group" id="datepickerMulti">
-                          <input type="text" class="form-control" id="Dates" name="Dates" placeholder="Select days" required />
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
-                       </div>	                  
+                          <input type="date" class="form-control" id="start_date"  placeholder="Select days" required />
+                          <input type="date" class="form-control" id="end_date"  placeholder="Select days" required />                  
                     </td>
                 </tr>
+                <tr>
+                	<th>Location</th>
+                	<td><input type="text" name="" id="location_add_app"></td>
+            	</tr>
                 <tr>
                     <th>Check-in time:</th>
                     <td><input type="time" id="time_in" name="appt" ></td>
@@ -243,7 +245,7 @@
                 <tr><td colspan="2">&nbsp;</td></tr>
                 <tr>
                     <td colspan="2" id="submit_prijava">
-                        <input type="submit" id="btn_login_submit" style="float: right; text-align: center;" value=" Submit ">
+                        <input type="submit" id="btn_add_apartment_submit" style="float: right; text-align: center;" value=" Submit ">
                     </td> 
                 </tr>
             </table>
