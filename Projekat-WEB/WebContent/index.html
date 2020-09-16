@@ -11,6 +11,8 @@
     <script src = "users.js"></script>
 	<script src = "addApartment.js"></script>  
     <script src = "addAmenitie.js"></script>
+    <script src = "apartments.js"></script>
+    
 </head>
 <body>
     <div>
@@ -23,7 +25,8 @@
             <li class="sidebar-item" id="search_li"><a>Search</a></li>
             <li class="sidebar-item" id="profile_li"><a>User Profile</a></li>
             <li class="sidebar-item" id="add_new_ap_li"><a>Add new apartment</a></li>
-            <li class="sidebar-item" id="add_new_amenitie_li"><a>Amenities</a></li>            
+            <li class="sidebar-item" id="add_new_amenitie_li"><a>Amenities</a></li>    
+            <li class="sidebar-item" id="apartments"><a>Apartments</a></li>        
         </ul>
     </div>
 
@@ -292,7 +295,25 @@
 
       <!--  *********************************************************** -->
 
+       <!------------------------ Pregled apartmana ------------------------>
 
+	<div id="apartments-list" hidden>
+		<h1 style="text-align: center;" >Apartments</h1></br>
+		 <table id="apartments-list-table">
+	     	<thead>
+                <th>Type</th>
+                <th>Number of rooms</th>
+                <th>Number of guests</th>
+                <th>Address</th>
+                <th>Price</th>
+                <th></th>
+            </thead>
+          <tbody></tbody>
+       	</table>
+   	</div>
+   	
+      <!--  *********************************************************** -->		
+      
       <!---------------------------- Modalni za dodavanje sadrzaja apartmanima ------------------------->
         <div id="mod_amenities" class="modal" hidden>
             <div class="modal-content">

@@ -67,7 +67,7 @@ public class ApartmentDAO {
 				apartment.getPrice(),
 				apartment.getCheckinTime(),
 				apartment.getCheckoutTime(),
-				ApartmentStatus.INACTIVE,
+				ApartmentStatus.ACTIVE,
 				true);
 		
 		return newApartment;

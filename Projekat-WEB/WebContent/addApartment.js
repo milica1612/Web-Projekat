@@ -70,7 +70,7 @@ $(document).ready(function() {
     			"city" : city,
     			"postNumber" : postcode
     			
-    	} 
+              } 
             //  "checkIn" : checkIn,
             // "checkOut" : checkOut
            }
