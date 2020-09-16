@@ -40,7 +40,13 @@ $(document).ready(function() {
         var numberOfRooms = $('input[name="number_rooms"]').val();
         var numberOfGuests = $('input[name="number_guests"]').val();
         var cost = $('input[name="cost_per_night"]').val();
-  
+        var type = $( "#ap_type option:selected" ).val();
+        var checkIn = $('input[name="appt_in"]').val();
+        var checkOut = $('input[name="appt_out"]').val();
+        var city = $('input[name="city_add_app"]').val();
+        var street = $('input[name="street_add_app"]' ).val();
+        //var number = $( "#number_add_app" ).val();
+        var postcode = $('input[name="postcode_add_app"]').val();
       /*  if(!username){
            $('#errLogin').text('Please fill Username field');
            event.preventDefault();
@@ -52,10 +58,21 @@ $(document).ready(function() {
           return;
         }
         else{*/
+        
            var object = {
               "roomNumber" : numberOfRooms,
               "numberOfGuests" : numberOfGuests,
-              "price" : cost
+              "price" : cost,
+              "type" : type,
+              "address" :  {
+      			"id" : 1,
+    			"streetAndNumber" : street,
+    			"city" : city,
+    			"postNumber" : postcode
+    			
+    	} 
+            //  "checkIn" : checkIn,
+            // "checkOut" : checkOut
            }
         //}
   

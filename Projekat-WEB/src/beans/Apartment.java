@@ -8,7 +8,7 @@ public class Apartment {
 	private ApartmentType type;
 	private int roomNumber;
 	private int numberOfGuests;
-	private Location location;
+	private Address address;
 	private ArrayList<Long> rentingDates;
 	private ArrayList<Long> availableDates;
 	private String host;
@@ -26,14 +26,14 @@ public class Apartment {
 		this.active = true;
 	}
 
-	public Apartment(long id, ApartmentType type, int roomNumber, int numberOfGuests, Location location, String host,
+	public Apartment(long id, ApartmentType type, int roomNumber, int numberOfGuests, Address address, String host,
 			double price, LocalTime checkinTime, LocalTime checkoutTime, ApartmentStatus status, boolean active) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.roomNumber = roomNumber;
 		this.numberOfGuests = numberOfGuests;
-		this.location = location;
+		this.address = address;
 		this.host = host;
 		this.price = price;
 		this.checkinTime = checkinTime;
@@ -48,7 +48,7 @@ public class Apartment {
 		this.active = active;
 	}
 
-	public Apartment(long id, ApartmentType type, int roomNumber, int numberOfGuests, Location location,
+	public Apartment(long id, ApartmentType type, int roomNumber, int numberOfGuests, Address address,
 			ArrayList<Long> rentingDates, ArrayList<Long> availableDates, String host, double price,
 			ArrayList<Long> comments, ArrayList<String> images, LocalTime checkinTime, LocalTime checkoutTime,
 			ApartmentStatus status, ArrayList<Long> amenities, ArrayList<Long> reservations, boolean active) {
@@ -57,7 +57,7 @@ public class Apartment {
 		this.type = type;
 		this.roomNumber = roomNumber;
 		this.numberOfGuests = numberOfGuests;
-		this.location = location;
+		this.address = address;
 		this.rentingDates = rentingDates;
 		this.availableDates = availableDates;
 		this.host = host;
@@ -112,12 +112,12 @@ public class Apartment {
 		this.numberOfGuests = numberOfGuests;
 	}
 
-	public Location getLocation() {
-		return location;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setAddress(Address adsress) {
+		this.address = address;
 	}
 
 	public ArrayList<Long> getRentingDates() {

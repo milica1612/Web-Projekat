@@ -35,8 +35,7 @@ public class ApartmentDAO {
 
 	public void addTestData() {
 		Address a = new Address(3, "", "", 1);
-		Location location = new Location(3, 3, 3, a);
-		Apartment apa1 = new Apartment(6, ApartmentType.ROOM, 5, 5, location, "zorana",
+				Apartment apa1 = new Apartment(6, ApartmentType.ROOM, 5, 5, a, "zorana",
 				30, null, null, ApartmentStatus.ACTIVE, true);
 		apartments.put(apa1.getId(), apa1);
 	}
@@ -57,12 +56,13 @@ public class ApartmentDAO {
 	
 	private Apartment createNewApartment(Apartment apartment) {
 		long id = apartments.size() + 1;
+		System.out.println("Create new apartmet");
 		Apartment newApartment = new Apartment(
 				id,
 				apartment.getType(), 
 				apartment.getRoomNumber(),
 				apartment.getNumberOfGuests(),
-				apartment.getLocation(),
+				apartment.getAddress(),
 				apartment.getHost(),
 				apartment.getPrice(),
 				apartment.getCheckinTime(),
