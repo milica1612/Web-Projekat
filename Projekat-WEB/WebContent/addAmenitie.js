@@ -1,7 +1,7 @@
 function listAmenitie(amenitie) {
     let name = $('<td>'+ amenitie.name +'</td>');
-    let edit = $('<td>' + '<button class="btnEdit" type="submit" >EDIT</button>' + '</td>');
-    let ddelete = $('<td>' + '<button  class="btnDelete" type="submit" >DELETE</button>' + '</td>');
+    let edit = $('<td>' + '<button id = "' + amenitie.id + '" class="btnEdit" type="submit" >EDIT</button>' + '</td>');
+    let ddelete = $('<td>' + '<button id = "' + amenitie.id + '" class="btnDelete" type="submit" >DELETE</button>' + '</td>');
     
     let tr = $('<tr></tr>');
     tr.append(name).append(edit).append(ddelete);
@@ -73,11 +73,11 @@ $(document).ready(function(){
                 
         	});
 
-            $('#amenities-list-table').click('.btnDelete', function(){
+         /*   $('#amenities-list-table').click('.btnDelete', function(){
             	
             	$.ajax({
                        type: 'put',
-                       url: 'rest/amenities'+ amenitie.name,
+                       url: 'rest/amenities'+ name,
                        contentType: 'application/json',
                        data: JSON.stringify(object),         
                        success: function(response) {
@@ -105,6 +105,6 @@ $(document).ready(function(){
                        }
                     });
               
-       });         
+       });         */
 
 });         

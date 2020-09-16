@@ -191,6 +191,10 @@ public class Apartment {
 	public void setComments(ArrayList<Long> comments) {
 		this.comments = comments;
 	}
+	
+	public void addComment(long comment) {
+		this.comments.add(comment);
+	}
 
 	public ArrayList<Long> getAmenities() {
 		return amenities;

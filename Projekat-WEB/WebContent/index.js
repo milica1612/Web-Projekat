@@ -8,6 +8,9 @@ function clearWorkspace(){
     $('#div_dodavanje_sadrzaja').hide();
     $('#amenities-list-table').hide();
     $('#amenities-list').hide();
+    $('#apartments-list').hide();
+    $('#apartments-list-table').hide();
+    
 }
 
 activeUser = null;
@@ -33,6 +36,12 @@ $(document).ready(function(){
     $('#add_new_ap_li').click(function() {
         clearWorkspace();
         $('#div_dodavanje_apartmana').show();
+    });
+    
+    $('#apartments').click(function() {
+        clearWorkspace();
+        $('#apartments-list').show();
+        $('#apartments-list-table').show();
     });
 
     $('#add_new_amenitie_li').click(function() {
