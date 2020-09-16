@@ -41,8 +41,8 @@ public class CommentService {
 		}
 	}
 	
-	/*@POST
-	@Path("/addcomment")
+/*	@POST
+	//@Path("/addcomment")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Comment postComment(Apartment apartment, Comment comment, @Context HttpServletRequest request) throws NoSuchAlgorithmException {

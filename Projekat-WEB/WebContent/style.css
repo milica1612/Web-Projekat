@@ -151,7 +151,7 @@ button {
     box-shadow: 0 4px #999;
 }
 
-.btnSelect{
+.btnEdit{
 	display: inline-block;
     width: 100px;
     padding: 10px;
@@ -167,6 +167,21 @@ button {
     box-shadow: 0 4px #999;
 }
 
+.btnDelete{
+	display: inline-block;
+    width: 100px;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px #999;
+}
 form#forma {
     display: inline-block;
 }

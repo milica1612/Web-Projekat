@@ -1,7 +1,7 @@
 function listAmenitie(amenitie) {
     let name = $('<td>'+ amenitie.name +'</td>');
-    let edit = $('<td>' + '<button class="btnSelect" type="submit" >EDIT</button>' + '</td>');
-    let ddelete = $('<td>' + '<button class="btnSelect" type="submit" >DELETE</button>' + '</td>');
+    let edit = $('<td>' + '<button class="btnEdit" type="submit" >EDIT</button>' + '</td>');
+    let ddelete = $('<td>' + '<button  class="btnDelete" type="submit" >DELETE</button>' + '</td>');
     
     let tr = $('<tr></tr>');
     tr.append(name).append(edit).append(ddelete);
@@ -38,6 +38,7 @@ $(document).ready(function(){
                 var object = {
                       "name" : name
                    }
+                          
                 console.log(name);
           
                 $.ajax({
@@ -69,5 +70,41 @@ $(document).ready(function(){
                       alert("Successfully added amenitie!");
                    }
                 });
-       });            
-});
+                
+        	});
+
+            $('#amenities-list-table').click('.btnDelete', function(){
+            	
+            	$.ajax({
+                       type: 'put',
+                       url: 'rest/amenities'+ amenitie.name,
+                       contentType: 'application/json',
+                       data: JSON.stringify(object),         
+                       success: function(response) {
+                    	
+                    	   clearWorkspace();
+
+                           $.ajax({
+                               type: "get",
+                               url: "rest/amenities/all",
+                               contentType: "application/json",
+                               success: function(amenities) {
+                                   console.log(amenities);
+                                   $('#amenities-list').show();
+                                   $('#amenities-list-table').show();
+                                   $('#amenities-list-table tbody').empty();
+                                   $('#div_dodavanje_sadrzaja').show();
+                                   	for(let amenitie of amenities){
+                                   		listAmenitie(amenitie);
+                                   	}
+                               }
+                           })
+                           
+                          console.log(response);
+                          alert("Successfully added amenitie!");
+                       }
+                    });
+              
+       });         
+
+});         
