@@ -78,8 +78,9 @@ public class ApartmentService {
 		User user = (User) request.getSession().getAttribute("user");
 		
 		String newUser = user.getRole().toString();
+		System.out.println(newUser);
 		
-		return apartmentDao.getAllApartments(newUser, user);
+		return apartmentDao.getAllApartments(user);
 	}
 
 	/*

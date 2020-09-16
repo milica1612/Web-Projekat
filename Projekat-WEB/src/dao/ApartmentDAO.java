@@ -30,7 +30,7 @@ public class ApartmentDAO {
 		this.contextPath = path;
 		System.out.println(contextPath);
 		
-	//	loadApartments(contextPath);
+    	apartments = loadApartments(contextPath);
 	}
 
 	public void addTestData() {
@@ -94,26 +94,29 @@ public class ApartmentDAO {
 	    mapper.writeValue(apartmentFile, apartments);
 	}
 
-	public Collection<Apartment> getAllApartments(String role, User user) {
+	public Collection<Apartment> getAllApartments(User user) {
 		ArrayList<Apartment> retApartments = new ArrayList<Apartment>();
-		
+		Role role = user.getRole();
 		switch (role) {
-		case "GUEST":
+		case GUEST:
+		
 			for (Apartment apartment : apartments.values()) {
-				if(apartment.isActive() && apartment.getStatus().equals("ACTIVE")) {
+				System.out.println(apartment.getId());
+				if(apartment.isActive() && apartment.getStatus().equals(ApartmentStatus.ACTIVE)) {
+					System.out.println(apartment.getId());
 					retApartments.add(apartment);
 				}
 			}
 			break;
-		case "HOST":
+		case HOST:
 			ArrayList<Long> ap = user.getApartmentsForRent();
 			for (Apartment apartment : apartments.values()) {
-					if(apartment.isActive() && apartment.getStatus().equals("ACTIVE") && ap.contains(apartment.getId())) {
+					if(apartment.isActive() && ap.contains(apartment.getId())) {
 						retApartments.add(apartment);
 					}
 			}
 			break;
-		case "ADMINISTRATOR": 
+		default: 
 			for (Apartment apartment : apartments.values()) {
 				if(apartment.isActive()){
 					retApartments.add(apartment);
