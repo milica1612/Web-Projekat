@@ -1,6 +1,6 @@
 function putInTable(amenitie) {
     let name = $('<td>'+ amenitie.name +'</td>');
-    let checkboxx = $('<td>' + '<input type="checkbox" id="' + amenitie.id + '" value="' + amenitie.name + '"' + '</td>');
+    let checkboxx = $('<td>' + '<input type="checkbox" id="check" value="' + amenitie.name + '"' + '</td>');
     let tr = $('<tr></tr>');
     tr.append(name).append(checkboxx);
     $('#amenities-list-table-modal tbody').append(tr);
