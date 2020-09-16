@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Reservation;
 import beans.User;
+import dao.ApartmentDAO;
 import dao.ReservationDAO;
 import dao.UserDAO;
 
@@ -55,7 +56,9 @@ public class ReservationService {
 		UserDAO userDao = (UserDAO) ctx.getAttribute("userDAO");
 		userDao.addNewReservation(guestUsername, added);
 		
-			
+		ApartmentDAO apartmentDAO = (ApartmentDAO) ctx.getAttribute("apartmentDAO");	
+		apartmentDAO.addNewReservation(reservation.getApartment(), reservation.getId());
+		
 		if(added == null) {
 			return null;
 		}

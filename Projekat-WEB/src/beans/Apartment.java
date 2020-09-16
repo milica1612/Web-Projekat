@@ -211,5 +211,10 @@ public class Apartment {
 	public void setReservations(ArrayList<Long> reservations) {
 		this.reservations = reservations;
 	}
+
+	public void addReservation(long id) {
+		this.reservations.add(id);
+		
+	}
 	
 }

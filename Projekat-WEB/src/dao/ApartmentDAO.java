@@ -127,6 +127,12 @@ public class ApartmentDAO {
 		
 		return retApartments;
 	}
+
+	public void addNewReservation(long apartment, long id) {
+		Apartment ap =  apartments.get(apartment);
+		ap.addReservation(id);
+		
+	}
 	
 	
 }
